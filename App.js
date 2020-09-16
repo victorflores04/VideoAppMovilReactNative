@@ -3,15 +3,17 @@ import {
   Text,
 } from 'react-native';
 import Home from  './src/screens/containers/home';
+import Header from './src/sections/components/header';
+import SuggestionList from './src/videos/containers/suggestions-list';
 
 export default class App extends Component<Props>{
   render(){
     return(
       <Home>
-        <Text>Home</Text>
+        <Header><Text>Icon and User</Text></Header>
         <Text>Buscador</Text>
         <Text>Categoria</Text>
-        <Text>Sugerencias</Text>
+        <SuggestionList/>
       </Home>
     )
   }
