@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import Layout from '../components/layout';
 import Video from 'react-native-video';
 import {
-StyleSheet,
-ActivityIndicator,
-}from 'react-native';
+  StyleSheet,
+  ActivityIndicator,
+  Text,
+} from 'react-native';
+import Layout from '../components/layout';
+import ControlLayout from '../components/control-layout';
+import PlayPause from '../components/play-pause';
 
 
 class Player extends Component{
     state={
         loading: true,
+        paused: false,
     }
     onBuffer = ({isBuffering})=>{
         this.setState({
@@ -21,10 +25,15 @@ class Player extends Component{
             loading: false
         })
     }
+    playPause=()=>{
+        this.setState({
+            paused: !this.state.paused
+        })
+    }
 render(){
     return(
         <Layout
-        loading={this.setState.loading}
+        loading={this.state.loading}
         video={
             <Video 
             source={{uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"}}
@@ -32,25 +41,34 @@ render(){
             resizeMode="contain"
             onBuffer={this.onBuffer}
             onLoad={this.onLoad}
+            paused={this.state.paused}
             />
-           
         }
         loader={
-            <ActivityIndicator 
-            color="red"
+          <ActivityIndicator color="red" />
+        }
+        controls={
+          <ControlLayout>
+            <PlayPause
+              onPress={this.playPause}
+              paused={this.state.paused}
             />
+            <Text>progress bar | </Text>
+            <Text>time left | </Text>
+            <Text>fullscreen | </Text>
+          </ControlLayout>
         }
         />
     )
 }
 }
 const styles =StyleSheet.create({
-    video:{
+    video: {
         position: 'absolute',
-        left:0,
-        right:0,
-        bottom:0,
-        top:0,
-    }
+        left: 0,
+        right: 0,
+        bottom: 0,
+        top: 0,
+      }
 });
 export default Player;
