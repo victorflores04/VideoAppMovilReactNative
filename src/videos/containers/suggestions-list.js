@@ -8,11 +8,17 @@ import {
 import Layout from '../components/suggestions-list-layout';
 import Empty from '../components/emtpy';
 import Separator from '../components/vertical-separator';
+import Suggestions from '../components/suggestions';
 
 class SuggestionList extends Component{
 
     renderEmtpy =()=> <Empty text="No hay sugerencias :c"/>
     itemSeparator =()=> <Separator />
+    renderItem =({item})=>{
+        return(
+            <Suggestions {...item}/>
+        );
+    }
     render(){
         const list =[
             {
@@ -31,7 +37,7 @@ class SuggestionList extends Component{
                     data={list} 
                     ListEmptyComponent={this.renderEmtpy}
                     ItemSeparatorComponent={this.itemSeparator}
-                    renderItem={({item})=><Text>{item.title}</Text>}
+                    renderItem={this.renderItem}
                     />
             </Layout>
                 

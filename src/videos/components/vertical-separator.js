@@ -9,9 +9,6 @@ StyleSheet
 function VerticalSeparator(props){
     return(
         <View style={[styles.separator, {borderTopColor:(props.color)? props.color:'#eaeaea'}]}>
-            <Text>
-                esto es un separador
-            </Text>
         </View>
     )
 }

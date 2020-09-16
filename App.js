@@ -5,8 +5,12 @@ import {
 import Home from  './src/screens/containers/home';
 import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestions-list';
+import API from './utils/api';
 
 export default class App extends Component<Props>{
+  async componentDidMount(){
+   const movies = await API.getSuggestion(10);
+  }
   render(){
     return(
       <Home>
