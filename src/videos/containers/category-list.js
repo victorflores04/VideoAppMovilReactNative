@@ -8,7 +8,7 @@ FlatList,
 
 import Empty from '../components/emtpy';
 import Separator from '../../sections/components/horizaontal-separator';
-import Suggestions from '../components/suggestions';
+import Category from '../components/category';
 import Layout from '../components/category-list-layout';
 
 class CategoriesList extends Component{
@@ -17,7 +17,7 @@ class CategoriesList extends Component{
     itemSeparator =()=> <Separator />
     renderItem =({item})=>{
         return(
-            <Suggestions {...item}/>
+            <Category {...item}/>
         );
     }
 
