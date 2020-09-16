@@ -7,5 +7,5 @@ class Api{
          return data.movies;
 
     }
-}
+};
 export default new Api();
